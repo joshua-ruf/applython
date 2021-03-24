@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <link rel="stylesheet" href= "./static/main.css" />
+  </head>
+  <header>
+    <h4>{{ post.company}}</h4>
+    <h4>{{ post.position}}</h4>
+    <h4>{{ now }}</h4>
+  </header>
+  <body>
+    {{ post.html|safe }}
+  </body>
+  <footer>
+    <p>Prepared with <a href="https://github.com/joshua-ruf/applython">applython</a>.</p>
+  </footer> 
+</html>
