@@ -52,6 +52,9 @@ class applython:
         """
         print('parsing markdown...')
 
+        # remove extension
+        markdown_file = os.path.splitext(markdown_file)[0]
+
         posts = [p for p in self.flatpages if p.path == markdown_file]
         
         ### check if the selected markdown_file exists

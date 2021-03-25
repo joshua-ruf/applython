@@ -1,5 +1,6 @@
 
 import sqlite3
+from datetime import datetime
 
 class database:
 	def __init__(self):
@@ -95,7 +96,7 @@ class database:
 		self.cursor.execute(query, values)
 		self.db.commit()
 
-	def list_applications(self, n=10, company=None, position=None):
+	def list_applications(self, n=10, company=None, position=None, to_csv=False):
 		"""
 		Print the most recent applications to console.
 
@@ -104,6 +105,8 @@ class database:
 			which does not filter by company
 		:param position: string, position name to limit search, defaults to None
 			which does not filter by position
+		:param to_csv: bool, whether to save save results to filename.csv, defaults
+			to False which prints results to console
 		"""
 		query = f"""
 			SELECT *
@@ -121,11 +124,24 @@ class database:
 		)
 		self.cursor.execute(query, values)
 
+		import csv
+
 		rows = [r for r in self.cursor.fetchall()]
 		print('Applications found:', len(rows))
 		if len(rows) > 0:
-			for r in rows:
-				print(r)
+			if to_csv:
+				now = datetime.today().strftime('%Y%m%d%H%M%S')
+				csv_file = now + 'applythonExport.csv'
+				with open(csv_file, mode='w') as file:
+					writer = csv.writer(file, delimiter=',', quotechar='"')
+					writer.writerow(['id', 'company', 'position', 'date', 'callback'])
+					for r in rows:
+						writer.writerow(r)
+
+				print('saved to', csv_file)
+			else:
+				for r in rows:
+					print(r)
 
 	def callback_rate(self):
 		"""
@@ -146,10 +162,10 @@ if __name__ == '__main__':
 	print('database connected')
 	# DB.insert('company test', 'position test', '2021-03-18')
 	# print('row inserted')
-	DB.list_applications(100, company='Byg Data', position='yes')
-	print('showed applications')
+	# DB.list_applications(100, company='Byg Data', position='yes')
+	# print('showed applications')
 
-	DB.list_applications(100)
+	DB.list_applications(100, to_csv=True)
 	print('showed applications')
 
 
@@ -161,7 +177,7 @@ if __name__ == '__main__':
 	# DB.list_applications(100)
 	# print('showed applications (again)')
 
-	print('have I applied?')
-	print(DB.applied('Byg Data', 'Data Shaman'))
+	# print('have I applied?')
+	# print(DB.applied('Byg Data', 'Data Shaman'))
 
 	DB.db.close()
