@@ -1,6 +1,7 @@
 
 import sqlite3
 from datetime import datetime
+import csv
 
 class database:
 	def __init__(self):
@@ -123,8 +124,6 @@ class database:
 			n
 		)
 		self.cursor.execute(query, values)
-
-		import csv
 
 		rows = [r for r in self.cursor.fetchall()]
 		print('Applications found:', len(rows))
