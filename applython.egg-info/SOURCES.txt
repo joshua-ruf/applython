@@ -1,9 +1,0 @@
-README.md
-app.py
-setup.py
-applython.egg-info/PKG-INFO
-applython.egg-info/SOURCES.txt
-applython.egg-info/dependency_links.txt
-applython.egg-info/entry_points.txt
-applython.egg-info/requires.txt
-applython.egg-info/top_level.txt
