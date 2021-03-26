@@ -7,7 +7,7 @@ Efficiently and dynamically render cover letters for job applications with markd
 2. from within the applython directory, install applython as a python package with `pip3 install .`
 
 ### Use
-By default applython chooses the cover-letters/cover-letter.md file as its template, edit this file to make it your own. If you have multiple cover letters your using for different positions, you can add another file to the cover-letters folder and select that as an option in the `build` command. In the markdown files use the `{{ post.parameter }}` syntax to include dynamic content.
+By default applython chooses the cover-letters/cover-letter.md file as its template, edit this file to make it your own. You can add another file to the cover-letters folder and cycle between them with an option in the `build` command. In the markdown files use the `{{ post.parameter }}` syntax to include dynamic content.
 
 To generate a cover letter:
 
@@ -15,7 +15,7 @@ To generate a cover letter:
 applython build -i myawesomecoverletter.md -o MyAwesomeCoverLetter.pdf
 ```
 
-Here, the `-i` and `-o` commands default to `cover-letter.md` and `CoverLetter.pdf` respectively. Remember that `myawesomecoverletter.md` must be in the cover-letters/ folder.
+Here, the `-i` and `-o` options are optional, defaulting to `cover-letter.md` and `CoverLetter.pdf` respectively. Remember that `myawesomecoverletter.md` must be in the cover-letters/ folder.
 
 
 To list your five most recent applications run:
