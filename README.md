@@ -4,7 +4,7 @@ Efficiently and dynamically render cover letters for job applications with markd
 
 ### Installation
 1. install wkhtmltopdf with `brew install wkhtmltopdf` on mac and `apt-get install wkhtmltopdf` on linux. Follow [this link](https://docs.brew.sh/Installation) for an install guide for brew.
-2. from within the applython directory, install applython as a python package with `pip3 install .`
+2. from within the applython directory, install applython as a python package with `pip3 install --editable .`
 
 ### Use
 By default applython chooses the cover-letters/cover-letter.md file as its template, edit this file to make it your own. You can add another file to the cover-letters folder and cycle between them with an option in the `build` command. In the markdown files use the `{{ post.parameter }}` syntax to include dynamic content.
